@@ -47,14 +47,14 @@ export const Form = styled.form`
 `;
 
 export const Repositories = styled.div`
-  margin-top: 60px;
+  margin-top: 50px;
   max-width: 700px;
 
   a {
    background: #fff;
    border-radius: 5px;
    width: 100%;
-   padding: 20px;
+   padding: 15px;
    display: block;
    text-decoration: none;
 
@@ -71,13 +71,14 @@ export const Repositories = styled.div`
    }
 
     img {
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
     }
 
     div {
-      margin-left: 16px;
+      margin-left: 30px;
+      flex: 1;
 
       strong {
         font-size: 20px;
@@ -87,7 +88,7 @@ export const Repositories = styled.div`
       p {
         font-size: 18px;
         color: #A8A8B3;
-        margin-top: 5px;
+        margin-top: 8px;
       }
     }
 
