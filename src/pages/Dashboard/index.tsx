@@ -1,5 +1,6 @@
 import React, {useState, FormEvent, useEffect} from 'react';
 import { FiChevronRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/logo.svg'
 import api from '../../services/api';
@@ -19,7 +20,16 @@ const Dashboard: React.FC = () => {
 
   const [inputErro, setInputError] = useState('');
 
-  const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [repositories, setRepositories] = useState<Repository[]>(() => {
+    const storagedRepositories =
+    localStorage.getItem('@GithubExplorer:repositories');
+
+    if (storagedRepositories) {
+      return JSON.parse(storagedRepositories);
+    } else {
+      return []
+    }
+  });
 
   async function handleAddRepository(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
@@ -44,7 +54,10 @@ const Dashboard: React.FC = () => {
   }
 
   useEffect(() => {
-  },[]);
+    localStorage.setItem(
+      '@GithubExplorer:repositories',
+      JSON.stringify(repositories))
+  },[repositories]);
 
   return (
     <>
@@ -65,17 +78,20 @@ const Dashboard: React.FC = () => {
 
     <Repositories>
       {repositories.map(repository => (
-        <a key={repository.full_name} href="teste">
-        <img
-          src={repository.owner.avatar_url}
-          alt={repository.owner.login}
-        />
-        <div>
-          <strong>{repository.full_name}</strong>
-          <p>{repository.description}</p>
-        </div>
-        <FiChevronRight size={30}/>
-      </a>
+        <Link
+          key={repository.full_name}
+          to={`/repository/${repository.full_name}`}
+        >
+          <img
+            src={repository.owner.avatar_url}
+            alt={repository.owner.login}
+          />
+          <div>
+            <strong>{repository.full_name}</strong>
+            <p>{repository.description}</p>
+          </div>
+          <FiChevronRight size={30}/>
+        </Link>
       ))}
     </Repositories>
   </>
