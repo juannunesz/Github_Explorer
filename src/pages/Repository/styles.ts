@@ -23,22 +23,105 @@ export const Header = styled.header`
   }
 `;
 
-export const RepositoryInfo = styled.div`
-  display:flex;
-  margin-top:60px;
+export const RepositoryInfo = styled.section`
+  margin-top:50px;
 
-  header{
+  header {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 
-    img{
-      height: 100px;
-      width:100px;
-
+    img {
+      height: 110px;
+      width:110px;
+      border-radius: 50%;
     }
+
+    div {
+      margin-left: 30px;
+
+      strong {
+        font-size: 36px;
+        color: #3d3d4d;
+      }
+
+      p {
+        font-size: 18px;
+        margin-top: 10px;
+        color: #737380;
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    margin-top: 40px;
+
+    li {
+      & + li {
+        margin-left: 80px;
+      }
+
+      strong {
+        display: block;
+        font-size: 30px;
+        color: #3d3d4d;
+      }
+
+      span {
+        display: block;
+        margin-top: 4px;
+        color: #6c6c80;
+      }
+    }
+
   }
 `;
 
+export const Issues = styled.div`
+  margin-top: 50px;
+
+  a {
+   background: #fff;
+   border-radius: 5px;
+   width: 100%;
+   padding: 15px;
+   display: block;
+   text-decoration: none;
+
+   display: flex;
+   align-items: center;
+   transition: transform 0.2s;
+
+   &:hover{
+     transform: translateX(10px);
+   }
+
+   & + a {
+     margin-top: 16px;
+   }
+
+    div {
+      margin-left: 30px;
+      flex: 1;
+
+      strong {
+        font-size: 20px;
+        color: #3D3D4D;
+      }
+
+      p {
+        font-size: 18px;
+        color: #A8A8B3;
+        margin-top: 8px;
+      }
+    }
+
+    svg {
+      margin-left: auto;
+      color: #cbcbd6;
+    }
+  }
+`;
 
 
